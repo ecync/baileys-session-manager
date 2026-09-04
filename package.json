@@ -1,6 +1,6 @@
 {
   "name": "@ecync/baileys-session-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A drop-in replacement for Baileys' useMultiFileAuthState, backed by MongoDB, PostgreSQL, MySQL, SQLite, Cloudflare D1, Firebase, or Firestore, with optional Redis caching (TCP or HTTP), AES-256 encryption at rest, and distributed locking.",
   "keywords": [
     "baileys",
