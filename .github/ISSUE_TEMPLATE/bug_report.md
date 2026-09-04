@@ -25,7 +25,7 @@ What you expected to happen instead.
 - Is encryption at rest (`encryption.enabled`) turned on?
 - Is key retention/auto-pruning (`retention.enabled`) turned on, and with what `maxAgeMsByCategory`?
 - Node.js version (`node -v`)
-- `@acync/baileys-session-manager` version, and `baileys` version
+- `@ecync/baileys-session-manager` version, and `baileys` version
 - How many server instances/processes are sharing this session, if more than one?
 
 **Logs**

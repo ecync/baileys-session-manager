@@ -32,7 +32,7 @@ Because of that split, `KeyRetentionOptions.enabled` defaults to `false`, and ev
 ### The safe default: only bookkeeping categories
 
 ```ts
-import { useHybridAuthState } from '@acync/baileys-session-manager'
+import { useHybridAuthState } from '@ecync/baileys-session-manager'
 
 const { state, saveCreds } = await useHybridAuthState({
 	sessionId: 'my-bot',

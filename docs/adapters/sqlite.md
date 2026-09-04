@@ -5,7 +5,7 @@ npm install better-sqlite3
 ```
 
 ```ts
-import { SqliteAdapter, useHybridAuthState } from '@acync/baileys-session-manager'
+import { SqliteAdapter, useHybridAuthState } from '@ecync/baileys-session-manager'
 
 const adapter = new SqliteAdapter('./sessions.sqlite')
 

@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for wanting to help with `@acync/baileys-session-manager`. Bug fixes, new database adapters, documentation improvements, and general cleanup are all welcome.
+Thanks for wanting to help with `@ecync/baileys-session-manager`. Bug fixes, new database adapters, documentation improvements, and general cleanup are all welcome.
 
 ## Getting set up
 
@@ -47,6 +47,10 @@ Use the PR template, it's short: what changed, why, and a checklist confirming `
 ## Reporting bugs / requesting features
 
 Use the issue templates: [bug report](.github/ISSUE_TEMPLATE/bug_report.md) or [feature request](.github/ISSUE_TEMPLATE/feature_request.md). For a bug report, the more specific you can be about your setup (which adapter, which Redis mode if any, encryption on or off, Node version), the faster it's actionable.
+
+## Releasing
+
+Maintainers only, contributors don't need this. See [docs/releasing.md](./docs/releasing.md) for the full CI/publish setup, cutting a release is `npm version <patch|minor|major> && git push --follow-tags`, a GitHub Actions workflow handles the rest.
 
 ## License
 

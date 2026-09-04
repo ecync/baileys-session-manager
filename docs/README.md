@@ -1,6 +1,6 @@
 # Documentation
 
-Deep-dive reference for `@acync/baileys-session-manager`. The top-level [README](../README.md) is the quick overview and quick start, this folder is where each concern gets a full explanation, so you can jump straight to what you need.
+Deep-dive reference for `@ecync/baileys-session-manager`. The top-level [README](../README.md) is the quick overview and quick start, this folder is where each concern gets a full explanation, so you can jump straight to what you need.
 
 - [Installation](./installation.md)
 - [Quick start (SQLite)](./quick-start.md)
@@ -23,5 +23,6 @@ Deep-dive reference for `@acync/baileys-session-manager`. The top-level [README]
 - [Error handling and retries](./error-handling.md)
 - [Full API reference](./api-reference.md)
 - [Migrating from useMultiFileAuthState](./migration-from-file-auth-state.md)
+- [Releasing (CI, npm publish, GitHub Actions)](./releasing.md)
 
 Want to contribute a fix or a new adapter? See [CONTRIBUTING.md](../CONTRIBUTING.md) in the repo root.

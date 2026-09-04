@@ -5,7 +5,7 @@ npm install firebase-admin
 ```
 
 ```ts
-import { FirebaseRealtimeAdapter, useHybridAuthState } from '@acync/baileys-session-manager'
+import { FirebaseRealtimeAdapter, useHybridAuthState } from '@ecync/baileys-session-manager'
 
 const adapter = new FirebaseRealtimeAdapter({
 	databaseURL: 'https://your-project.firebaseio.com'

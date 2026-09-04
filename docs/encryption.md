@@ -3,7 +3,7 @@
 Off by default, so the [quick start](./quick-start.md) stays simple. Turn it on when you don't want raw WhatsApp credentials sitting in plaintext in whatever database or Redis instance you're using, worth doing for essentially any production deployment.
 
 ```ts
-import { generateEncryptionKey, useHybridAuthState } from '@acync/baileys-session-manager'
+import { generateEncryptionKey, useHybridAuthState } from '@ecync/baileys-session-manager'
 
 // Run this once, then store the result somewhere safe: an environment
 // variable, a secrets manager. Losing it makes every encrypted session

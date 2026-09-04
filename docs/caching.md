@@ -15,7 +15,7 @@ A read checks L1, then L2, then L3, stopping at the first hit and backfilling th
 The normal way to run Redis: a persistent connection over the wire.
 
 ```ts
-import { createRedisTcpCache, useHybridAuthState } from '@acync/baileys-session-manager'
+import { createRedisTcpCache, useHybridAuthState } from '@ecync/baileys-session-manager'
 
 const redis = await createRedisTcpCache({ url: 'redis://localhost:6379' })
 
@@ -33,7 +33,7 @@ TCP mode gets full pub/sub cache invalidation: after a write, the writing instan
 For serverless and edge environments that can't hold a persistent TCP connection open, Upstash (and compatible providers) offer Redis over plain HTTP.
 
 ```ts
-import { createRedisHttpCache, useHybridAuthState } from '@acync/baileys-session-manager'
+import { createRedisHttpCache, useHybridAuthState } from '@ecync/baileys-session-manager'
 
 const redis = await createRedisHttpCache({
 	url: process.env.UPSTASH_REDIS_REST_URL!,

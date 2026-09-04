@@ -1,10 +1,10 @@
 # Installation
 
 ```bash
-npm install @acync/baileys-session-manager baileys
+npm install @ecync/baileys-session-manager baileys
 ```
 
-`@acync/baileys-session-manager` only ever bundles logic, never database drivers. Every driver is an optional peer dependency, lazily imported inside the one adapter that needs it, so `npm install` stays light and you only add the driver for the backend you actually chose.
+`@ecync/baileys-session-manager` only ever bundles logic, never database drivers. Every driver is an optional peer dependency, lazily imported inside the one adapter that needs it, so `npm install` stays light and you only add the driver for the backend you actually chose.
 
 | Backend | Install this too |
 | --- | --- |

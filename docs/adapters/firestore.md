@@ -5,7 +5,7 @@ npm install firebase-admin
 ```
 
 ```ts
-import { FirestoreAdapter, useHybridAuthState } from '@acync/baileys-session-manager'
+import { FirestoreAdapter, useHybridAuthState } from '@ecync/baileys-session-manager'
 
 const adapter = new FirestoreAdapter()
 

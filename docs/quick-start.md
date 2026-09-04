@@ -5,14 +5,14 @@ SQLite needs no external service, so it's the fastest way to see the whole packa
 ## 1. Install
 
 ```bash
-npm install @acync/baileys-session-manager baileys better-sqlite3
+npm install @ecync/baileys-session-manager baileys better-sqlite3
 ```
 
 ## 2. Wire it up
 
 ```ts
 import { makeWASocket } from 'baileys'
-import { useHybridAuthState, SqliteAdapter } from '@acync/baileys-session-manager'
+import { useHybridAuthState, SqliteAdapter } from '@ecync/baileys-session-manager'
 
 const adapter = new SqliteAdapter('./sessions.sqlite')
 

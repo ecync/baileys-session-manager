@@ -3,7 +3,7 @@
 D1 only exists as a binding inside a Cloudflare Worker, there's no standalone Node client for it the way there is for a normal database. Nothing to `npm install` beyond the base package, you hand the adapter the `D1Database` binding straight from your Worker's `env`.
 
 ```ts
-import { CloudflareD1Adapter, useHybridAuthState } from '@acync/baileys-session-manager'
+import { CloudflareD1Adapter, useHybridAuthState } from '@ecync/baileys-session-manager'
 
 export default {
 	async fetch(request: Request, env: { DB: D1Database }) {
@@ -33,6 +33,6 @@ CREATE TABLE IF NOT EXISTS baileys_sessions (
 ## Notes
 
 - `adapter.close()` is a no-op here on purpose, D1 bindings are managed entirely by the Workers runtime, there's no connection on your side to close.
-- Type your Worker's `env` however you normally do, `D1Database`/`D1PreparedStatement` are re-exported from this package (`import type { D1Database } from '@acync/baileys-session-manager'`) as a lightweight alternative to depending on `@cloudflare/workers-types` just for this.
+- Type your Worker's `env` however you normally do, `D1Database`/`D1PreparedStatement` are re-exported from this package (`import type { D1Database } from '@ecync/baileys-session-manager'`) as a lightweight alternative to depending on `@cloudflare/workers-types` just for this.
 
 See [Choosing a database](./overview.md) for the shared `IDatabaseAdapter` contract every backend implements the same way.

@@ -5,7 +5,7 @@ npm install mysql2
 ```
 
 ```ts
-import { MysqlAdapter, useHybridAuthState } from '@acync/baileys-session-manager'
+import { MysqlAdapter, useHybridAuthState } from '@ecync/baileys-session-manager'
 
 const adapter = new MysqlAdapter({
 	host: 'localhost',

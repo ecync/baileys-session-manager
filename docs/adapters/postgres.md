@@ -5,7 +5,7 @@ npm install pg
 ```
 
 ```ts
-import { PostgresAdapter, useHybridAuthState } from '@acync/baileys-session-manager'
+import { PostgresAdapter, useHybridAuthState } from '@ecync/baileys-session-manager'
 
 const adapter = new PostgresAdapter({
 	connectionString: process.env.DATABASE_URL

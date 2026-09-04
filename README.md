@@ -1,4 +1,10 @@
-# @acync/baileys-session-manager
+# @ecync/baileys-session-manager
+
+[![CI](https://github.com/ecync/baileys-session-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/ecync/baileys-session-manager/actions/workflows/ci.yml)
+[![Publish to npm](https://github.com/ecync/baileys-session-manager/actions/workflows/publish.yml/badge.svg)](https://github.com/ecync/baileys-session-manager/actions/workflows/publish.yml)
+[![npm version](https://img.shields.io/npm/v/@ecync/baileys-session-manager.svg)](https://www.npmjs.com/package/@ecync/baileys-session-manager)
+[![npm downloads](https://img.shields.io/npm/dm/@ecync/baileys-session-manager.svg)](https://www.npmjs.com/package/@ecync/baileys-session-manager)
+[![License: MIT](https://img.shields.io/npm/l/@ecync/baileys-session-manager.svg)](./LICENSE)
 
 A drop-in replacement for [Baileys'](https://github.com/WhiskeySockets/Baileys) `useMultiFileAuthState`, built for production instead of a single bot on a single machine.
 
@@ -21,7 +27,7 @@ This package addresses each of those: a pluggable database adapter so you can pi
 ## Installation
 
 ```bash
-npm install @acync/baileys-session-manager baileys
+npm install @ecync/baileys-session-manager baileys
 ```
 
 Every database driver is an optional peer dependency, install the one for whichever backend you're using, see [Installation](./docs/installation.md) for the full table.
@@ -30,7 +36,7 @@ Every database driver is an optional peer dependency, install the one for whiche
 
 ```ts
 import { makeWASocket } from 'baileys'
-import { useHybridAuthState, SqliteAdapter } from '@acync/baileys-session-manager'
+import { useHybridAuthState, SqliteAdapter } from '@ecync/baileys-session-manager'
 
 const adapter = new SqliteAdapter('./sessions.sqlite')
 

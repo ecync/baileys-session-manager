@@ -5,7 +5,7 @@ npm install mongodb
 ```
 
 ```ts
-import { MongoAdapter, useHybridAuthState } from '@acync/baileys-session-manager'
+import { MongoAdapter, useHybridAuthState } from '@ecync/baileys-session-manager'
 
 const adapter = new MongoAdapter({
 	uri: process.env.MONGO_URI ?? 'mongodb://localhost:27017',

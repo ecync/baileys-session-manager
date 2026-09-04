@@ -8,7 +8,7 @@ import { useMultiFileAuthState } from 'baileys'
 const { state, saveCreds } = await useMultiFileAuthState('./auth')
 
 // After
-import { useHybridAuthState, SqliteAdapter } from '@acync/baileys-session-manager'
+import { useHybridAuthState, SqliteAdapter } from '@ecync/baileys-session-manager'
 const adapter = new SqliteAdapter('./auth.sqlite')
 const { state, saveCreds } = await useHybridAuthState({ sessionId: 'my-bot', adapter })
 ```

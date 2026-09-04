@@ -1,0 +1,61 @@
+name: Publish to npm
+
+# Fires on any pushed tag matching v* (e.g. v1.0.0, created by `npm version` or
+# `git tag`). Typechecks, builds, and tests run again here even though CI
+# already ran them on the commit, a tag push is a separate event and this
+# workflow shouldn't trust that CI definitely ran and passed for it.
+on:
+  push:
+    tags:
+      - 'v*'
+  # Lets a maintainer trigger a publish by hand from the Actions tab without
+  # pushing a new tag, useful for re-running a publish that failed partway
+  # through for an infrastructure reason unrelated to the code itself.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write # required for npm provenance (Sigstore-signed build attestation)
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          registry-url: 'https://registry.npmjs.org'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify publish tarball contents
+        run: npm pack --dry-run
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public
+        env:
+          # A classic npm access token (Automation type), stored as a repo secret.
+          # See docs/releasing.md for how to generate and add this.
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
