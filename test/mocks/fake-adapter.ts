@@ -15,6 +15,13 @@ export class FakeAdapter implements IDatabaseAdapter {
 	setCalls = 0
 	setManyCalls = 0
 
+	/** Simulated network latency per setMany() call, used to make a regression like "N sequential round trips instead of one" show up as a timing difference in tests. */
+	private readonly setManyLatencyMs: number
+
+	constructor(options: { setManyLatencyMs?: number } = {}) {
+		this.setManyLatencyMs = options.setManyLatencyMs ?? 0
+	}
+
 	private key(sessionId: string, key: string) {
 		return `${sessionId}:${key}`
 	}
@@ -44,6 +51,10 @@ export class FakeAdapter implements IDatabaseAdapter {
 
 	async setMany(sessionId: string, entries: Array<{ key: string; value: string }>): Promise<void> {
 		this.setManyCalls++
+		if (this.setManyLatencyMs > 0) {
+			await new Promise(resolve => setTimeout(resolve, this.setManyLatencyMs))
+		}
+
 		for (const entry of entries) {
 			const existing = this.rows.get(this.key(sessionId, entry.key))
 			this.rows.set(this.key(sessionId, entry.key), {

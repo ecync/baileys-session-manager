@@ -135,6 +135,17 @@ export async function useHybridAuthState(options: AuthManagerOptions): Promise<{
 					return data
 				},
 				set: async data => {
+					// Baileys already hands us every category/id it wants to change in one
+					// call (during pairing this can be hundreds of pre-keys at once). The
+					// whole point of batching is to write all of that in a single round
+					// trip, so we collect everything here first and hand it to the adapter
+					// as one setMany() call, instead of going through the debounced
+					// WriteBatcher per key. Awaiting a write per key in this loop used to be
+					// the bug: with a lock held per sessionId (not per key), hundreds of
+					// sequential lock-acquire/write/release round trips here would starve
+					// out anything else waiting on that same lock, like a session key a
+					// concurrent sendMessage() needed to write.
+					const entries: Array<{ key: string; value: string }> = []
 					const deletions: string[] = []
 
 					for (const category in data) {
@@ -146,11 +157,18 @@ export async function useHybridAuthState(options: AuthManagerOptions): Promise<{
 							const cacheKeyName = `${category}-${id}`
 
 							if (value) {
-								await batcher.write(cacheKeyName, encode(value))
+								entries.push({ key: cacheKeyName, value: encode(value) })
 							} else {
 								deletions.push(cacheKeyName)
 							}
 						}
+					}
+
+					if (entries.length > 0) {
+						await lock.withLock(sessionId, async () => {
+							await adapter.setMany(sessionId, entries)
+							await Promise.all(entries.map(entry => cache.onWritten(sessionId, entry.key, entry.value, Date.now())))
+						})
 					}
 
 					if (deletions.length > 0) {
